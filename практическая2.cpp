@@ -11,12 +11,12 @@ int factorial(int n) {
 
 int main() {
     setlocale(0, "");
-    cout << "×èñëà îò 1 äî 10:" << endl;
+    cout << "Ð§Ð¸ÑÐ»Ð° Ð¾Ñ‚ 1 Ð´Ð¾ 10:" << endl;
 
     for (int i = 1; i <= 10; ++i) {
         cout << i << " ";
     }
-    cout << "\n\nÔàêòîðèàë ÷èñëà 5: " << factorial(5) << endl;
+    cout << "\n\nÐ¤Ð°ÐºÑ‚Ð¾Ñ€Ð¸Ð°Ð» Ñ‡Ð¸ÑÐ»Ð° 5: " << factorial(5) << endl;
 
     return 0;
 }
