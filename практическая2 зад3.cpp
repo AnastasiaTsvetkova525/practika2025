@@ -1,40 +1,55 @@
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <cmath>
 #include <chrono>
-bool isPrime(int n) {
-    setlocale(0, "");
-    if (n <= 1) return false;
-    for (int i = 2; i <= std::sqrt(n); ++i) {
-        if (n % i == 0) return false;
-    }
-    return true;
-}
-int main() {
-    setlocale(0, "");
-    const int VECTOR_SIZE = 10'000'000; 
-    const int PRIME_LIMIT = 500'000;  
-    auto start = std::chrono::high_resolution_clock::now();
-std::cout << "Ãåíåðàöèÿ è ñ÷¸ò÷èê âåêòîðà " << VECTOR_SIZE << " ýëåìåíòû..." << std::endl;
-    std::vector<int> data(VECTOR_SIZE);
-    for (int i = 0; i < VECTOR_SIZE; ++i) {
-        data[i] = rand() % 1000000;
-    }
-    std::sort(data.begin(), data.end());
-    std::cout << "Âû÷èñëåíèå ïðîñòûõ ÷èñåë ñ òî÷íîñòüþ äî " << PRIME_LIMIT << "..." << std::endl;
-    int primeCount = 0;
-    for (int i = 0; i < PRIME_LIMIT; ++i) {
-        if (isPrime(i)) {
-            primeCount++;
+        bool isPrime(int n) {
+            setlocale(0, "");
+            if (n <= 1) return false;
+            for (int i = 2; i <= std::sqrt(n); ++i) {
+                if (n % i == 0) return false;
+            }
+            return true;
         }
-    }
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
-    std::cout << "\n--- Ðåçóëüòàò ---" << std::endl;
-    std::cout << "Íàèìåíüøèé ýëåìåíò: " << data[0] << std::endl;
-    std::cout << "Íàèáîëüøèé ýëåìåíò: " << data[VECTOR_SIZE - 1] << std::endl;
-    std::cout << "Íàéäåííûå ïðîñòûå ÷èñëà: " << primeCount << std::endl;
-    std::cout << "Îáùåå âðåìÿ âûïîëíåíèÿ: " << elapsed.count() << " ñåêóíä" << std::endl;
-    return 0;
+
+        int main() {
+            setlocale(0, "");
+            const int VECTOR_SIZE = 10'000'000;
+            const int PRIME_LIMIT = 500'000;
+
+            auto start = std::chrono::high_resolution_clock::now();
+
+            std::cout << "Ð“ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ Ð¸ ÑÑ‡Ñ‘Ñ‚Ñ‡Ð¸Ðº Ð²ÐµÐºÑ‚Ð¾Ñ€Ð° " << VECTOR_SIZE << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹..." << std::endl;
+            std::vector<int> data(VECTOR_SIZE);
+
+            for (int i = 0; i < VECTOR_SIZE; ++i) {
+                data[i] = rand() % 1000000;
+            }
+
+            std::sort(data.begin(), data.end());
+
+            std::cout << "Ð’Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¾ÑÑ‚Ñ‹Ñ… Ñ‡Ð¸ÑÐµÐ» Ñ Ñ‚Ð¾Ñ‡Ð½Ð¾ÑÑ‚ÑŒÑŽ Ð´Ð¾ " << PRIME_LIMIT << "..." << std::endl;
+            int primeCount = 0;
+            for (int i = 0; i < PRIME_LIMIT; ++i) {
+                if (isPrime(i)) {
+                    primeCount++;
+                }
+            }
+
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> elapsed = end - start;
+
+            std::cout << "\n--- Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ ---" << std::endl;
+            std::cout << "ÐÐ°Ð¸Ð¼ÐµÐ½ÑŒÑˆÐ¸Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚: " << data[0] << std::endl;
+            std::cout << "ÐÐ°Ð¸Ð±Ð¾Ð»ÑŒÑˆÐ¸Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚: " << data[VECTOR_SIZE - 1] << std::endl;
+            std::cout << "ÐÐ°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾ÑÑ‚Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð°: " << primeCount << std::endl;
+            std::cout << "ÐžÐ±Ñ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ: " << elapsed.count() << " ÑÐµÐºÑƒÐ½Ð´" << std::endl;
+
+            return 0;
+
+
+  
+
 }
+
