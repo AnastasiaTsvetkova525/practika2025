@@ -1,0 +1,84 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <vector>
+
+const char* REG_SUBKEY = "Software\\MyFavoriteApp";
+
+
+void SaveSettingsToRegistry(const std::string& food, DWORD colorCode) {
+    HKEY hKey;
+
+    if (RegCreateKeyExA(HKEY_CURRENT_USER, REG_SUBKEY, 0, NULL,
+        REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hKey, NULL) == ERROR_SUCCESS) {
+
+        RegSetValueExA(hKey, "FavoriteFood", 0, REG_SZ,
+            (const BYTE*)food.c_str(), (DWORD)(food.length() + 1));
+
+        RegSetValueExA(hKey, "BackgroundColor", 0, REG_DWORD,
+            (const BYTE*)&colorCode, sizeof(DWORD));
+
+        RegCloseKey(hKey);
+    }
+}
+
+
+bool LoadSettingsFromRegistry(std::string& food, DWORD& colorCode) {
+    HKEY hKey;
+    if (RegOpenKeyExA(HKEY_CURRENT_USER, REG_SUBKEY, 0, KEY_READ, &hKey) == ERROR_SUCCESS) {
+        char buffer[255];
+        DWORD bufferSize = sizeof(buffer);
+
+        if (RegQueryValueExA(hKey, "FavoriteFood", NULL, NULL, (BYTE*)buffer, &bufferSize) == ERROR_SUCCESS) {
+            food = buffer;
+        }
+
+        DWORD color;
+        DWORD colorSize = sizeof(DWORD);
+        if (RegQueryValueExA(hKey, "BackgroundColor", NULL, NULL, (BYTE*)&color, &colorSize) == ERROR_SUCCESS) {
+            colorCode = color;
+        }
+
+        RegCloseKey(hKey);
+        return true;
+    }
+    return false;
+}
+
+
+
+void ApplyConsoleColor(DWORD colorCode) {
+
+    char command[10];
+    sprintf_s(command, "color %XF", colorCode);
+    system(command);
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    std::string food;
+    DWORD colorCode = 0;
+
+    if (LoadSettingsFromRegistry(food, colorCode)) {
+        ApplyConsoleColor(colorCode);
+        std::cout << "--- Настройки восстановлены из РЕЕСТРА ---" << std::endl;
+        std::cout << "Ваша сохраненная любимая еда: " << food << std::endl;
+    }
+    else {
+        std::cout << "Настройки в реестре не найдены (первый запуск)." << std::endl;
+    }
+    std::cout << "\nВведите вашу любимую еду: ";
+    std::getline(std::cin, food);
+
+    std::cout << "Выберите цвет фона (0-Черный, 1-Синий, 2-Зеленый, 4-Красный, 5-Фиолетовый): ";
+    std::cin >> colorCode;
+
+    ApplyConsoleColor(colorCode);
+    SaveSettingsToRegistry(food, colorCode);
+
+    std::cout << "\nДанные сохранены в реестр! Перезапустите программу для проверки." << std::endl;
+
+    system("pause");
+    return 0;
+}
