@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "..\task7\практическая 7.cpp"
+#include "..\task7\РїСЂР°РєС‚РёС‡РµСЃРєР°СЏ 7.cpp"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -9,7 +9,7 @@ namespace UnitTest1
     {
     public:
 
-        // Позитивный тест: square
+        // РџРѕР·РёС‚РёРІРЅС‹Р№ С‚РµСЃС‚: square
         TEST_METHOD(TestSquare_Positive)
         {
             double value = 3.0;
