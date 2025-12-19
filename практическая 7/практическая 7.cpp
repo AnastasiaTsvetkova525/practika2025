@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include <limits> // Для очистки буфера ввода
+#include <limits> // Р”Р»СЏ РѕС‡РёСЃС‚РєРё Р±СѓС„РµСЂР° РІРІРѕРґР°
 
 struct PowerRootOperations {
     static double square(double a) {
@@ -17,11 +17,11 @@ struct PowerRootOperations {
 
     static double nthRoot(double a, int n) {
         if (n <= 0) {
-            throw std::invalid_argument("Показатель корня должен быть положительным числом.");
+            throw std::invalid_argument("РџРѕРєР°Р·Р°С‚РµР»СЊ РєРѕСЂРЅСЏ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј.");
         }
 
         if (a < 0 && n % 2 == 0) {
-            throw std::invalid_argument("Извлечение четного корня из отрицательного числа невозможно.");
+            throw std::invalid_argument("РР·РІР»РµС‡РµРЅРёРµ С‡РµС‚РЅРѕРіРѕ РєРѕСЂРЅСЏ РёР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ С‡РёСЃР»Р° РЅРµРІРѕР·РјРѕР¶РЅРѕ.");
         }
         return std::pow(a, 1.0 / n);
     }
@@ -40,85 +40,85 @@ int main() {
     int rootDegree;
 
     do {
-        std::cout << "Меню операций: " << std::endl;
-        std::cout << "1. Возвести число в квадрат" << std::endl;
-        std::cout << "2. Возвести число в куб" << std::endl;
-        std::cout << "3. Возвести число в произвольную степень" << std::endl;
-        std::cout << "4. Извлечь корень произвольной степени из числа" << std::endl;
-        std::cout << "5. Выход" << std::endl;
-        std::cout << "Выберите пункт меню: ";
+        std::cout << "РњРµРЅСЋ РѕРїРµСЂР°С†РёР№: " << std::endl;
+        std::cout << "1. Р’РѕР·РІРµСЃС‚Рё С‡РёСЃР»Рѕ РІ РєРІР°РґСЂР°С‚" << std::endl;
+        std::cout << "2. Р’РѕР·РІРµСЃС‚Рё С‡РёСЃР»Рѕ РІ РєСѓР±" << std::endl;
+        std::cout << "3. Р’РѕР·РІРµСЃС‚Рё С‡РёСЃР»Рѕ РІ РїСЂРѕРёР·РІРѕР»СЊРЅСѓСЋ СЃС‚РµРїРµРЅСЊ" << std::endl;
+        std::cout << "4. РР·РІР»РµС‡СЊ РєРѕСЂРµРЅСЊ РїСЂРѕРёР·РІРѕР»СЊРЅРѕР№ СЃС‚РµРїРµРЅРё РёР· С‡РёСЃР»Р°" << std::endl;
+        std::cout << "5. Р’С‹С…РѕРґ" << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ: ";
 
         if (!(std::cin >> choice)) {
-            std::cout << "Ошибка ввода! Введите число." << std::endl;
+            std::cout << "РћС€РёР±РєР° РІРІРѕРґР°! Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ." << std::endl;
             clearInputBuffer();
             continue;
         }
 
         switch (choice) {
-        case 1: // Квадрат
-            std::cout << "Введите число: ";
+        case 1: // РљРІР°РґСЂР°С‚
+            std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
             if (!(std::cin >> number)) {
-                std::cout << "Ошибка ввода числа!" << std::endl;
+                std::cout << "РћС€РёР±РєР° РІРІРѕРґР° С‡РёСЃР»Р°!" << std::endl;
                 clearInputBuffer();
                 break;
             }
-            std::cout << "Квадрат введенного числа" << number << " = " << PowerRootOperations::square(number) << std::endl;
+            std::cout << "РљРІР°РґСЂР°С‚ РІРІРµРґРµРЅРЅРѕРіРѕ С‡РёСЃР»Р°" << number << " = " << PowerRootOperations::square(number) << std::endl;
             break;
 
-        case 2: // Куб
-            std::cout << "Введите число: ";
+        case 2: // РљСѓР±
+            std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
             if (!(std::cin >> number)) {
-                std::cout << "Ошибка ввода числа!" << std::endl;
+                std::cout << "РћС€РёР±РєР° РІРІРѕРґР° С‡РёСЃР»Р°!" << std::endl;
                 clearInputBuffer();
                 break;
             }
-            std::cout << "Куб введенного числа" << number << " = " << PowerRootOperations::cube(number) << std::endl;
+            std::cout << "РљСѓР± РІРІРµРґРµРЅРЅРѕРіРѕ С‡РёСЃР»Р°" << number << " = " << PowerRootOperations::cube(number) << std::endl;
             break;
 
-        case 3: // Произвольная степень
-            std::cout << "Введите число: ";
+        case 3: // РџСЂРѕРёР·РІРѕР»СЊРЅР°СЏ СЃС‚РµРїРµРЅСЊ
+            std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
             if (!(std::cin >> number)) {
-                std::cout << "Ошибка ввода числа!" << std::endl;
+                std::cout << "РћС€РёР±РєР° РІРІРѕРґР° С‡РёСЃР»Р°!" << std::endl;
                 clearInputBuffer();
                 break;
             }
-            std::cout << "Введите степень: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ СЃС‚РµРїРµРЅСЊ: ";
             if (!(std::cin >> exponent)) {
-                std::cout << "Ошибка ввода степени!" << std::endl;
+                std::cout << "РћС€РёР±РєР° РІРІРѕРґР° СЃС‚РµРїРµРЅРё!" << std::endl;
                 clearInputBuffer();
                 break;
             }
-            std::cout << number << " в степени " << exponent << " = " << PowerRootOperations::power(number, exponent) << std::endl;
+            std::cout << number << " РІ СЃС‚РµРїРµРЅРё " << exponent << " = " << PowerRootOperations::power(number, exponent) << std::endl;
             break;
 
-        case 4: // Корень произвольной степени
-            std::cout << "Введите число: ";
+        case 4: // РљРѕСЂРµРЅСЊ РїСЂРѕРёР·РІРѕР»СЊРЅРѕР№ СЃС‚РµРїРµРЅРё
+            std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
             if (!(std::cin >> number)) {
-                std::cout << "Ошибка ввода числа!" << std::endl;
+                std::cout << "РћС€РёР±РєР° РІРІРѕРґР° С‡РёСЃР»Р°!" << std::endl;
                 clearInputBuffer();
                 break;
             }
-            std::cout << "Введите степень корня (целое положительное число): ";
+            std::cout << "Р’РІРµРґРёС‚Рµ СЃС‚РµРїРµРЅСЊ РєРѕСЂРЅСЏ (С†РµР»РѕРµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ): ";
             if (!(std::cin >> rootDegree)) {
-                std::cout << "Ошибка ввода степени корня!" << std::endl;
+                std::cout << "РћС€РёР±РєР° РІРІРѕРґР° СЃС‚РµРїРµРЅРё РєРѕСЂРЅСЏ!" << std::endl;
                 clearInputBuffer();
                 break;
             }
 
             try {
-                std::cout << "Корень степени " << rootDegree << " из " << number << " = " << PowerRootOperations::nthRoot(number, rootDegree) << std::endl;
+                std::cout << "РљРѕСЂРµРЅСЊ СЃС‚РµРїРµРЅРё " << rootDegree << " РёР· " << number << " = " << PowerRootOperations::nthRoot(number, rootDegree) << std::endl;
             }
             catch (const std::invalid_argument& e) {
-                std::cout << "Ошибка: " << e.what() << std::endl;
+                std::cout << "РћС€РёР±РєР°: " << e.what() << std::endl;
             }
             break;
 
-        case 5: // Выход
-            std::cout << "Выход из программы." << std::endl;
+        case 5: // Р’С‹С…РѕРґ
+            std::cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹." << std::endl;
             break;
 
         default:
-            std::cout << "Неверный пункт меню! Попробуйте снова." << std::endl;
+            std::cout << "РќРµРІРµСЂРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ! РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl;
             break;
         }
 
