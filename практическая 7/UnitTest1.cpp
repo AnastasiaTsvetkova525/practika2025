@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "..\task7\практическая 7.cpp"
+#include "..\task7\РїСЂР°РєС‚РёС‡РµСЃРєР°СЏ 7.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -9,7 +9,7 @@ namespace UnitTest1
     TEST_CLASS(PerimeterOperationsTests)
     {
     public:
-        // Позитивный тест 1: квадрат
+        // РџРѕР·РёС‚РёРІРЅС‹Р№ С‚РµСЃС‚ 1: РєРІР°РґСЂР°С‚
         TEST_METHOD(TestSquarePerimeter_ValidInput_ReturnsCorrectValue)
         {
             double a = 5.0;
@@ -17,7 +17,7 @@ namespace UnitTest1
             Assert::AreEqual(20.0, result, 0.0001);
         }
 
-        // Позитивный тест 2: окружность
+        // РџРѕР·РёС‚РёРІРЅС‹Р№ С‚РµСЃС‚ 2: РѕРєСЂСѓР¶РЅРѕСЃС‚СЊ
         TEST_METHOD(TestCircleCircumference_ValidInput_ReturnsCorrectValue)
         {
             double r = 2.0;
@@ -27,7 +27,7 @@ namespace UnitTest1
             Assert::AreEqual(expected, result, 0.0001);
         }
 
-        // Негативный тест 1: квадрат с отрицательной стороной
+        // РќРµРіР°С‚РёРІРЅС‹Р№ С‚РµСЃС‚ 1: РєРІР°РґСЂР°С‚ СЃ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№ СЃС‚РѕСЂРѕРЅРѕР№
         TEST_METHOD(TestSquarePerimeter_NegativeSide_ThrowsException)
         {
             double a = -1.0;
@@ -36,7 +36,7 @@ namespace UnitTest1
             );
         }
 
-        // Негативный тест 2: несуществующий треугольник
+        // РќРµРіР°С‚РёРІРЅС‹Р№ С‚РµСЃС‚ 2: РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє
         TEST_METHOD(TestTrianglePerimeter_InvalidSides_ThrowsException)
         {
             double a = 1.0;
